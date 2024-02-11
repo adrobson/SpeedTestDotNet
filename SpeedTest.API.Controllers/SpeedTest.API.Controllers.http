@@ -1,0 +1,6 @@
+@SpeedTest.API.Controllers_HostAddress = http://localhost:5081
+
+GET {{SpeedTest.API.Controllers_HostAddress}}/articleType/
+Accept: application/json
+
+###
