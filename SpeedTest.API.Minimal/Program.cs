@@ -122,4 +122,13 @@ app.MapGet("/article/top/{numArticles}", async (int numArticles) =>
     }
 });
 
+app.MapGet("/articleRating/last/{numRatings}", async (int numRatings) =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _articleRatingRepository = scope.ServiceProvider.GetRequiredService<IArticleRatingRepository>();
+        return await _articleRatingRepository.Last(numRatings);
+    }
+});
+
 app.Run();

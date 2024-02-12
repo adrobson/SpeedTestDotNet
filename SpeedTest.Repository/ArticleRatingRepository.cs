@@ -45,6 +45,17 @@ namespace SpeedTest.Repository
             }
         }
 
+        public async Task<IEnumerable<ArticleRating>> Last(int numRatings)
+        {
+            using (var context = new SpeedTestContext())
+            {
+                return await context.ArticleRatings
+                    .OrderByDescending(x => x.RatingDate)
+                    .Take(numRatings)
+                    .ToListAsync();
+            }
+        }
+
         public async Task<IEnumerable<ArticleRating>> All()
         {
             using (var context = new SpeedTestContext())

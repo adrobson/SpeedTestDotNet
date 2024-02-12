@@ -78,6 +78,12 @@ namespace SpeedTest.API.Controllers.Controllers
             return await _articleRatingRepository.GetOne(id);
         }
 
+        [HttpGet("[action]/{numRatings}")]
+        public async Task<IEnumerable<ArticleRating>> Last(int numRatings)
+        {
+            return await _articleRatingRepository.Last(numRatings);
+        }
+
         [HttpGet]
         public async Task<IEnumerable<ArticleRating>> Get()
         {

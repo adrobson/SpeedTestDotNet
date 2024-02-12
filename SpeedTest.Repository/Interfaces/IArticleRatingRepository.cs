@@ -13,6 +13,7 @@ namespace SpeedTest.Repository.Interfaces
         public Task Update(ArticleRating articleRating);
         public Task Delete(int articleRatingId);
         public Task<ArticleRating> GetOne(int id);
+        public Task<IEnumerable<ArticleRating>> Last(int numRatings);
         public Task<IEnumerable<ArticleRating>> All();
 
     }
