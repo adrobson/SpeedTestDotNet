@@ -90,6 +90,18 @@ namespace SpeedTest.API.Controllers.Controllers
             return await _articleRatingRepository.All();
         }
 
+        [HttpPut("[action]")]
+        public async Task UpdateLast()
+        {
+            await _articleRatingRepository.UpdateLast();
+        }
+
+        [HttpDelete("[action]")]
+        public async Task DeleteLast()
+        {
+            await _articleRatingRepository.DeleteLast();
+        }
+
         private static ArticleRatingDTO ItemToDTO(ArticleRating ArticleRating) =>
             new ArticleRatingDTO
             {

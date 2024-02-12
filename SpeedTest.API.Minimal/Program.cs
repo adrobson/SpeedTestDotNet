@@ -5,7 +5,7 @@ using SpeedTest.Repository;
 using SpeedTest.API.Minimal.DTOs;
 using SpeedTest.API.Minimal.Mappers;
 using Microsoft.AspNetCore.Http.HttpResults;
-;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -94,6 +94,26 @@ app.MapGet("/articleRating", async () =>
         return await _articleRatingRepository.All();
     }
 });
+
+//Test only Article Rating methods
+app.MapPut("/articleRating/update/last", async Task () =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _articleRatingRepository = scope.ServiceProvider.GetRequiredService<IArticleRatingRepository>();
+        await _articleRatingRepository.UpdateLast();
+    }
+});
+
+app.MapDelete("/articleRating/delete/last", async Task () =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _articleRatingRepository = scope.ServiceProvider.GetRequiredService<IArticleRatingRepository>();
+        await _articleRatingRepository.DeleteLast();
+    }
+});
+
 
 app.MapGet("/author", async () =>
 {

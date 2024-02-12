@@ -16,5 +16,9 @@ namespace SpeedTest.Repository.Interfaces
         public Task<IEnumerable<ArticleRating>> Last(int numRatings);
         public Task<IEnumerable<ArticleRating>> All();
 
+        //Test only methods
+        public Task UpdateLast();
+        public Task DeleteLast();
+
     }
 }

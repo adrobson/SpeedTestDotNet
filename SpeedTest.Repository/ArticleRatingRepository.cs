@@ -63,5 +63,33 @@ namespace SpeedTest.Repository
                 return await context.ArticleRatings.ToListAsync();
             }
         }
+
+
+        //Test only methods
+        public async Task UpdateLast()
+        {
+            using (var context = new SpeedTestContext())
+            {
+                ArticleRating articleRating = context.ArticleRatings.OrderByDescending(x => x.ArticleRatingId).Take(1).First();
+                articleRating.RatingDate = DateTime.Now;
+                context.Entry(articleRating).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteLast()
+        {
+            using (var context = new SpeedTestContext())
+            {
+                var articleRating = context.ArticleRatings.OrderByDescending(x => x.ArticleRatingId).Take(1).First();
+                if (articleRating != null)
+                {
+                    context.ArticleRatings.Remove(articleRating);
+                    await context.SaveChangesAsync();
+                }
+            }
+        }
+
+
     }
 }
