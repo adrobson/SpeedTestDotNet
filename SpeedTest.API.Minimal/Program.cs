@@ -44,7 +44,6 @@ app.MapPost("/articleRating", async Task<Results<Ok<ArticleRatingDTO>, BadReques
     }
 });
 
-
 app.MapPut("/articleRating/{id}", async Task<Results<Ok<ArticleRatingDTO>, BadRequest>> (int id, ArticleRatingDTO articleRatingDTO) =>
 {
     using (var scope = app.Services.CreateScope())
@@ -102,6 +101,24 @@ app.MapGet("/author", async () =>
     {
         var _authorRepository = scope.ServiceProvider.GetRequiredService<IAuthorRepository>();
         return await _authorRepository.All();
+    }
+});
+
+app.MapGet("/author/top/{numAuthors}", (int numAuthors) =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _authorRepository = scope.ServiceProvider.GetRequiredService<IAuthorRepository>();
+        return _authorRepository.Top(numAuthors);
+    }
+});
+
+app.MapGet("/article/top/{numArticles}", async (int numArticles) =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var _articleRepository = scope.ServiceProvider.GetRequiredService<IArticleRepository>();
+        return await _articleRepository.Top(numArticles);
     }
 });
 

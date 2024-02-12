@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. API", "2. API", "{20958C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTest.API.Minimal", "SpeedTest.API.Minimal\SpeedTest.API.Minimal.csproj", "{D9416794-3A8A-40E4-9A8C-31AFCFCFA13D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTest.API.FastEndpoints", "SpeedTest.API.FastEndpoints\SpeedTest.API.FastEndpoints.csproj", "{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{D9416794-3A8A-40E4-9A8C-31AFCFCFA13D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9416794-3A8A-40E4-9A8C-31AFCFCFA13D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9416794-3A8A-40E4-9A8C-31AFCFCFA13D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +65,7 @@ Global
 		{48456B1E-BF1D-4C6C-A9CB-CC90CB932311} = {8CC43097-9ABB-492C-BD6D-9D37908FDF52}
 		{805D4259-901F-471C-8632-4214BDFA2DE6} = {20958C77-E75C-4365-B2DA-D920A6E41941}
 		{D9416794-3A8A-40E4-9A8C-31AFCFCFA13D} = {20958C77-E75C-4365-B2DA-D920A6E41941}
+		{7B8A1EFA-937E-4481-8EEF-53E0A3956AF6} = {20958C77-E75C-4365-B2DA-D920A6E41941}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C57121FC-31B8-4F76-99AF-A12450580C87}

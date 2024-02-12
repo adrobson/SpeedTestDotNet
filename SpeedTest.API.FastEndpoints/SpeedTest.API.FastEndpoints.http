@@ -1,0 +1,6 @@
+@SpeedTest.API.FastEndpoints_HostAddress = http://localhost:5007
+
+GET {{SpeedTest.API.FastEndpoints_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

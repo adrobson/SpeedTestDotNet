@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using SpeedTest.API.Controllers.DTOs;
 using SpeedTest.Context.Models;
 using SpeedTest.Repository.Interfaces;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SpeedTest.API.Controllers.Controllers
 {
