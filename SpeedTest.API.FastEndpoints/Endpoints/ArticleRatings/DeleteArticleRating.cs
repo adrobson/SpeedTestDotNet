@@ -2,26 +2,29 @@
 using SpeedTest.API.FastEndpoints.DTOs.ArticleRatings;
 using SpeedTest.API.FastEndpoints.DTOs.Articles;
 using SpeedTest.Context.Models;
+using SpeedTest.Repository;
 using SpeedTest.Repository.Interfaces;
 
 namespace SpeedTest.API.FastEndpoints.Endpoints.ArticleRatings
 {
 
-    public class GetLastArticleRating : Endpoint<NumArticleRatingsRequestDTO, IEnumerable<ArticleRating>>
+    public class DeleteArticleRatings : EndpointWithoutRequest
     {
         public IArticleRatingRepository _articleRatingRepository { get; set; }
 
         public override void Configure()
         {
-            Get("/articleRating/last/{numArticleRatings}");
+            Delete("/articleRating/{articleRatingId}");
             AllowAnonymous();
         }
 
-        public override async Task HandleAsync(NumArticleRatingsRequestDTO numArticleRatings, CancellationToken ct)
+        public override async Task HandleAsync(CancellationToken ct)
         {
-            var lastArticleRatings = await _articleRatingRepository.Last(numArticleRatings.NumArticleRatings);
+            int articleRatingId = Route<int>("articleRatingId");
 
-            await SendAsync(lastArticleRatings);
+            await _articleRatingRepository.Delete(articleRatingId);
+
+            await SendOkAsync();
         }
     }
 }

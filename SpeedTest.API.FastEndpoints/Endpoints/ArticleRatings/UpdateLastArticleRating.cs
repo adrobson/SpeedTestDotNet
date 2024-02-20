@@ -7,21 +7,21 @@ using SpeedTest.Repository.Interfaces;
 namespace SpeedTest.API.FastEndpoints.Endpoints.ArticleRatings
 {
 
-    public class GetLastArticleRating : Endpoint<NumArticleRatingsRequestDTO, IEnumerable<ArticleRating>>
+    public class UpdateLastArticleRatings : EndpointWithoutRequest
     {
         public IArticleRatingRepository _articleRatingRepository { get; set; }
 
         public override void Configure()
         {
-            Get("/articleRating/last/{numArticleRatings}");
+            Put("/articleRating/update/last");
             AllowAnonymous();
         }
 
-        public override async Task HandleAsync(NumArticleRatingsRequestDTO numArticleRatings, CancellationToken ct)
+        public override Task HandleAsync(CancellationToken ct)
         {
-            var lastArticleRatings = await _articleRatingRepository.Last(numArticleRatings.NumArticleRatings);
+            _articleRatingRepository.UpdateLast();
 
-            await SendAsync(lastArticleRatings);
+            return Task.CompletedTask;
         }
     }
 }

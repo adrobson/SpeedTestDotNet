@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace SpeedTest.Context.Models;
 
@@ -10,9 +11,21 @@ public partial class SpeedTestContext : DbContext
     {
     }
 
-    public SpeedTestContext(DbContextOptions<SpeedTestContext> options)
-        : base(options)
+    public SpeedTestContext(DbContextOptions<SpeedTestContext> options) : base(options)
     {
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        //    => optionsBuilder.UseSqlServer("Server=.;Database=SpeedTest;Trusted_Connection=True;Trust Server Certificate =Yes;");
+        if (!optionsBuilder.IsConfigured)
+        {
+            //            builder.Services.AddDbContext<SpeedTestContext>(options =>
+            //        options.UseSqlServer(builder.Configuration.GetConnectionString("SpeedTestConnection")));
+            optionsBuilder.UseSqlServer("Server=.;Database=SpeedTest;Trusted_Connection=True;MultipleActiveResultSets=true;Trust Server Certificate =Yes");
+        }
+
+        base.OnConfiguring(optionsBuilder);
     }
 
     public virtual DbSet<Article> Articles { get; set; }
@@ -24,10 +37,6 @@ public partial class SpeedTestContext : DbContext
     public virtual DbSet<Company> Companies { get; set; }
 
     public virtual DbSet<SiteUser> SiteUsers { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;Database=SpeedTest;Trusted_Connection=True;Trust Server Certificate =Yes;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -13,7 +13,9 @@ builder.Services.AddControllers();
 // Add a dbcontext .
 // Note that "Scoped" is the default choice of ServiceLifetime in AddDbContext. 
 builder.Services.AddDbContext<SpeedTestContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("SpeedTestConnection")));
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SpeedTestConnection"));
+});
 
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ISiteUserRepository, SiteUserRepository>();

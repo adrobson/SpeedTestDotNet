@@ -71,7 +71,9 @@ namespace SpeedTest.API.Controllers.Controllers
         [HttpGet]
         public async Task<IEnumerable<SiteUser>> Get()
         {
-            return await _siteUserRepository.All();
+            var SiteUsers = new List<SiteUser>() { new SiteUser() { SiteUserId = 1, SiteUserName = "Harold" } };
+            return SiteUsers;
+            //return await _siteUserRepository.All();
         }
 
         private static SiteUserDTO ItemToDTO(SiteUser SiteUser)

@@ -1,8 +1,15 @@
 using FastEndpoints;
 using SpeedTest.Repository.Interfaces;
 using SpeedTest.Repository;
+using Microsoft.EntityFrameworkCore;
+using SpeedTest.Context.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<SpeedTestContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SpeedTestConnection"));
+});
 
 // Add services to the container.
 builder.Services.AddFastEndpoints();
