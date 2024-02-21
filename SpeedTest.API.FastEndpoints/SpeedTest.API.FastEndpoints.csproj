@@ -5,10 +5,13 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
+    <ApplicationInsightsResourceId>/subscriptions/d957e7f2-15be-401b-8a1e-5310cc2237b8/resourceGroups/rgPaymentsDemo/providers/microsoft.insights/components/SpeedTestAPIInsights</ApplicationInsightsResourceId>
+    <UserSecretsId>5438b844-740d-417a-94f1-3a32b11e451c</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FastEndpoints" Version="5.22.0" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.21.0" />
   </ItemGroup>
 
   <ItemGroup>

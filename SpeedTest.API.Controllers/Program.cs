@@ -22,6 +22,7 @@ builder.Services.AddScoped<ISiteUserRepository, SiteUserRepository>();
 builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<IArticleRepository, ArticleRepository>();
 builder.Services.AddScoped<IArticleRatingRepository, ArticleRatingRepository>();
+builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 
 var app = builder.Build();
